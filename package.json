@@ -1,0 +1,21 @@
+{
+  "name": "aws-crud-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.985.0",
+    "axios": "^0.21.4",
+    "cheerio": "^1.0.0-rc.10",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^3.0.0",
+    "node-schedule": "^2.0.0"
+  }
+}
