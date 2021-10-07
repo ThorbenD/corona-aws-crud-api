@@ -7,11 +7,18 @@ scrapeData = async function () {
     if (data.error) return data.error;
 
     const $ = cheerio.load(data);
-    const intMedCapacity = $('td:contains("Belastungswert")').parent('tr').next().children().eq(3).children().text()
-    const incHospital = $('td:contains("Versorgungsgebiet Rheinpfalz")').parent('tr').children().eq(2).children().text();
+    let intMedCapacity = $('td:contains("Belastungswert")').parent('tr').next().children().eq(3).children().text()
+    let incHospital = $('td:contains("Versorgungsgebiet Rheinpfalz")').parent('tr').children().eq(2).children().text();
+
+    try { intMedCapacity = JSON.parse(intMedCapacity.trim().replace(',', '.')); }
+    catch(e) { intMedCapacity = 0; }
+
+    try { incHospital = JSON.parse(incHospital.trim().replace(',', '.')); }
+    catch(e) { incHospital = 0; }
+
     return {
-        'intMedCapacity': intMedCapacity.trim().replace(',', '.'),
-        'incHospital': incHospital.trim().replace(',', '.')
+        'intMedCapacity': intMedCapacity,
+        'incHospital': incHospital
     };
 };
 

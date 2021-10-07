@@ -5,6 +5,9 @@ CoronaData = async function () {
     const json = await fetchData();
     const scrape = (await scraper());
 
+    console.log(json);
+    console.log(scrape);
+
     return {
         'date': json.date.toISOString().split('T')[0],
         'admUnit': JSON.parse(json['keyData']['AdmUnitId']),
@@ -27,8 +30,8 @@ CoronaData = async function () {
         'intMedTreatment': JSON.parse(json['hospitalData']['faelle_covid_aktuell']),
         'intMedVentilation': JSON.parse(json['hospitalData']['faelle_covid_aktuell_beatmet']),
         'ICUBedPercentage': JSON.parse(json['hospitalData']['Anteil_betten_frei']),
-        'incHospital': JSON.parse(scrape['incHospital']),
-        'intMedCapacity': JSON.parse(scrape['intMedCapacity'])
+        'incHospital': scrape['incHospital'],
+        'intMedCapacity': scrape['intMedCapacity']
     }
 }
 
