@@ -7,7 +7,7 @@ scrapeData = async function () {
     if (data.error) return data.error;
 
     const $ = cheerio.load(data);
-    let intMedCapacity = $('td:contains("Belastungswert")').parent('tr').next().children().eq(3).children().text()
+    let intMedCapacity = $('td:contains("Belastungswert")').parent('tr').next().next().children().eq(3).children().text()
     let incHospital = $('td:contains("Versorgungsgebiet Rheinpfalz")').parent('tr').children().eq(2).children().text();
 
     try { intMedCapacity = JSON.parse(intMedCapacity.trim().replace(',', '.')); }
