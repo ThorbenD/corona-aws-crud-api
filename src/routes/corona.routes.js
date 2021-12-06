@@ -29,6 +29,9 @@ schedule.scheduleJob('* 0 */3 * * *', () => {
                 }
             });
         })
+        .catch(err => {
+            console.log(err)
+        });
 });
 
 router.get('/', async (req, res) => {
